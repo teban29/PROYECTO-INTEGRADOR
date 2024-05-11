@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registro de Usuario</title>
+    <style>
+      body {
+        font-family: "Times New Roman", Times, serif;
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(to right, #000428, #004e92);
+      }
+
+      .container {
+        font-size: larger;
+        text-align: center;
+        border-radius: 20px;
+        padding: 60px;
+        position: relative;
+        opacity: 0.9;
+        z-index: 2; /* Asegura que el contenido esté encima del fondo */
+        background: linear-gradient(to bottom, #01040c, #01040c);
+        box-shadow: 0 0 20px rgba(128, 106, 255, 0.3); /* Sombra suave */
+        color: #ffffff;
+      }
+
+      h1 {
+        margin-bottom: 20px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      input[type="text"],
+      input[type="password"],
+      select {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ffffff;
+        background-color: #01040c;
+        color: #ffffff;
+        margin-bottom: 10px;
+        outline: none;
+      }
+
+      input[type="submit"] {
+        font-family: Arial, sans-serif;
+        display: inline-block;
+        background-color: #01040c;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s;
+        margin-top: 10px;
+        cursor: pointer;
+        border: none;
+        outline: none;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #ffffff;
+        color: #01040c;
+      }
+
+      .logo {
+        position: absolute;
+        bottom: 20px;
+        right: px;
+        opacity: 0.3; /* Opacidad completa */
+        pointer-events: none;
+        z-index: 1; /* Coloca el logo detrás del contenido */
+      }
+
+      .login-link {
+        color: #ffffff;
+        text-decoration: none;
+      }
+
+      .login-link:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Logo -->
+    <img src="static\img\logo.png" alt="Logo" class="logo" />
+
+    <!-- Contenedor del formulario -->
+    <div class="container">
+      <h1>REGISTRO</h1>
+      <form action="/registro" method="POST">
+        <label for="tipo_usuario">Tipo de Usuario:</label>
+        <select name="tipo_usuario" id="tipo_usuario">
+          <option value="barbero">Barbero</option>
+          <option value="cliente">Cliente</option>
+        </select>
+        <br />
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" />
+        <br />
+        <label for="apellidos">Apellidos:</label>
+        <input type="text" id="apellidos" name="apellidos" />
+        <br />
+        <label for="telefono">Teléfono:</label>
+        <input type="text" id="telefono" name="telefono" />
+        <br />
+        <label for="username">Email:</label>
+        <input type="text" id="username" name="username" />
+        <br />
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password" name="password" />
+        <br />
+        <input type="submit" value="REGISTRARSE" />
+      </form>
+      <p>
+        ¿YA TIENES UNA CUENTA?
+        <a href="/login" class="login-link">INICIAR SESIÓN</a>
+      </p>
+    </div>
+  </body>
+</html>

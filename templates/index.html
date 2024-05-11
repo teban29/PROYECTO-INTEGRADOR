@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Barbería</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    />
+    <style>
+      body {
+        font-family: "Times New Roman", Times, serif;
+        background: linear-gradient(to right, #000428, #004e92);
+        color: white;
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .container {
+        font-size: larger;
+        text-align: center;
+        border-radius: 20px;
+        padding: 60px;
+        position: relative;
+        opacity: 0.9;
+        z-index: 2; /* Asegura que el contenido esté encima del fondo */
+        background: linear-gradient(to bottom, #01040c, #01040c);
+        box-shadow: 0 0 20px rgba(128, 106, 255, 0.3); /* Sombra suave */
+      }
+
+      h1 {
+        margin-bottom: 20px;
+      }
+
+      .btn {
+        font-family: Arial, sans-serif;
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s;
+        margin: 10px;
+      }
+      .btn-custom {
+        font-size: 18px; /* Tamaño de la fuente más 
+            font-weight: bold; /* Fuente en negrita */
+        letter-spacing: 1px; /* Espaciado entre 
+            padding: 15px 30px; /* Acolchado más grande */
+        border: none;
+        transition: 0.3s;
+      }
+
+      .btn:hover {
+        background-color: #0056b3;
+      }
+
+      /* Estilos para el logo */
+      .logo {
+        position: absolute;
+        bottom: 20px;
+        right: px;
+        opacity: 0.3; /* Opacidad completa */
+        pointer-events: none;
+        z-index: -2; /* Coloca el logo detrás del contenido */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Contenedor del contenido -->
+    <div class="container">
+      <h1>BIENVENIDO A NORTH BARBER</h1>
+      <a href="/registro" class="btn btn-primary">Registrarse</a>
+      <a href="/login" class="btn btn-primary">Iniciar Sesión</a>
+    </div>
+
+    <!-- Logo -->
+    <img src="static/img/logo.png" alt="Logo" class="logo" />
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  </body>
+</html>
