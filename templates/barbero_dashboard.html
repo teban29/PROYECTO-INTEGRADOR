@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    />
+    <style>
+      body {
+        background: linear-gradient(to right, #000428, #004e92);
+        color: white;
+        font-family: "Times New Roman", Times, serif;
+      }
+
+      .form-control {
+        max-width: 300px;
+      }
+
+      .container {
+        font-size: larger;
+        text-align: center;
+        border-radius: 20px;
+        padding: 60px;
+        position: relative;
+        opacity: 0.9;
+        z-index: 2;
+        background: linear-gradient(to bottom, #01040c, #01040c);
+        box-shadow: 0 0 20px rgba(128, 106, 255, 0.3);
+      }
+
+      .centered-buttons {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .btn {
+        font-size: 20px;
+        padding: 15px 30px;
+        border-radius: 25px;
+        color: white;
+        background: #007bff;
+        border: none;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        text-align: center;
+        margin: 10px;
+      }
+
+      .logo {
+        position: absolute;
+        bottom: 20px;
+        right: 450px;
+        opacity: 0.3;
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      .navbar {
+        background: linear-gradient(to right, #000428, #004e92);
+      }
+    </style>
+    <title>Interfaz de Barbero</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <a class="navbar-brand" href="#">NORTH BARBER</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="/agendar_cita">
+              <i class="fa fa-calendar"></i> Agendar Cita
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/calendario">
+              <i class="fa fa-calendar-alt"></i> Calendario
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/mi_cuenta_barbero">
+              <i class="fa fa-user"></i> Mi Cuenta
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <img src="static/img/logo.png" alt="Logo" class="logo" />
+    <div class="container">
+      <h1 class="text-center">ELIGE UNA OPCIÓN</h1>
+      <div class="centered-buttons">
+        <a
+          href="/agendar_cita_barbero"
+          class="btn btn-primary btn-lg"
+          role="button"
+        >
+          <i class="fa fa-calendar"></i> Agendar Cita
+        </a>
+        <a href="/calendario" class="btn btn-primary btn-lg" role="button">
+          <i class="fa fa-calendar-alt"></i> Calendario
+        </a>
+        <a
+          href="/mi_cuenta_barbero"
+          class="btn btn-primary btn-lg"
+          role="button"
+        >
+          <i class="fa fa-user"></i> Mi Cuenta
+        </a>
+      </div>
+    </div>
+  </body>
+</html>

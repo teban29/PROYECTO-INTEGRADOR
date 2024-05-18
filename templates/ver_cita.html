@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ver Citas</title>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -11,7 +12,6 @@
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
     />
-
     <style>
       body {
         background: linear-gradient(to right, #000428, #004e92);
@@ -23,23 +23,15 @@
         background: linear-gradient(to right, #000428, #004e92);
       }
 
-      .container {
-        font-size: larger;
-        text-align: center;
-        border-radius: 20px;
-        padding: 60px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        opacity: 0.9;
-        z-index: 2; /* Asegura que el contenido esté encima del fondo */
-        background: linear-gradient(to bottom, #01040c, #01040c);
-        box-shadow: 0 0 20px rgba(128, 106, 255, 0.3); /* Sombra suave */
-        color: #ffffff;
+      .cita {
+        background-color: #333333;
+        color: white;
+        padding: 10px;
+        margin: 10px;
+        border-radius: 10px;
+        display: inline-block;
       }
     </style>
-    <title>Agendar cita</title>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -58,22 +50,32 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item active">
-            <a class="nav-link" href="/agendar_cita">
-              <i class="fa fa-calendar"></i> Agendar Cita
-            </a>
+            <a class="nav-link" href="/agendar_cita"
+              ><i class="fa fa-calendar"></i> Agendar Cita</a
+            >
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/ver_cita">
-              <i class="fa fa-eye"></i> Ver Citas
-            </a>
+            <a class="nav-link" href="/ver_cita"
+              ><i class="fa fa-eye"></i> Ver Citas</a
+            >
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/mi_cuenta">
-              <i class="fa fa-user"></i> Mi Cuenta
-            </a>
+            <a class="nav-link" href="/mi_cuenta"
+              ><i class="fa fa-user"></i> Mi Cuenta</a
+            >
           </li>
         </ul>
       </div>
     </nav>
+    <div class="container">
+      <h1>Lista de Citas</h1>
+      {% for cita in citas %}
+      <div class="cita">
+        <p><strong>Fecha:</strong> {{ cita[1] }}</p>
+        <p><strong>Barbero:</strong> {{ cita[2] }}</p>
+        <p><strong>Servicio:</strong> {{ cita[3] }}</p>
+      </div>
+      {% endfor %}
+    </div>
   </body>
 </html>
