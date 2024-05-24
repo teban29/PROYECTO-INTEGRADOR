@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    />
+    <style>
+      body {
+        background: linear-gradient(to right, #000428, #004e92);
+        color: white;
+        font-family: "Times New Roman", Times, serif;
+      }
+
+      .container {
+        font-size: larger;
+        text-align: center;
+        border-radius: 20px;
+        padding: 60px;
+        position: relative;
+        opacity: 0.9;
+        z-index: 2;
+        background: linear-gradient(to bottom, #01040c, #01040c);
+        box-shadow: 0 0 20px rgba(128, 106, 255, 0.3);
+      }
+
+      .navbar {
+        background: linear-gradient(to right, #000428, #004e92);
+      }
+
+      .actions a {
+        display: inline-block;
+        padding: 8px 16px;
+        margin: 4px;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 4px;
+      }
+    </style>
+    <title>Administrar Clientes</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <a class="navbar-brand" href="#">NORTH BARBER</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/admin_dashboard"
+              ><i class="fa fa-home"></i> Dashboard</a
+            >
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="/admin_clientes"
+              ><i class="fa fa-users"></i> Clientes</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin_barberos"
+              ><i class="fa fa-cut"></i> Barberos</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin_citas"
+              ><i class="fa fa-calendar"></i> Citas</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin_servicios"
+              ><i class="fa fa-concierge-bell"></i> Servicios</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container">
+      <h1>Lista de Clientes</h1>
+      <div class="actions">
+        <a href="/admin_agregar_cliente">Agregar Cliente</a>
+      </div>
+      <table class="table table-dark table-hover">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>Teléfono</th>
+            <th>Usuario</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for cliente in clientes %}
+          <tr>
+            <td>{{ cliente[0] }}</td>
+            <td>{{ cliente[1] }}</td>
+            <td>{{ cliente[2] }}</td>
+            <td>{{ cliente[3] }}</td>
+            <td>{{ cliente[4] }}</td>
+            <td>
+              <a
+                href="/admin_eliminar_cliente/{{ cliente[0] }}"
+                class="btn btn-danger"
+                onclick="return confirm('¿Estás seguro de eliminar este cliente?')"
+                >Eliminar</a
+              >
+            </td>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

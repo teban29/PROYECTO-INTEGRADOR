@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    />
+    <style>
+      body {
+        background: linear-gradient(to right, #000428, #004e92);
+        color: white;
+        font-family: "Times New Roman", Times, serif;
+      }
+
+      .container {
+        font-size: larger;
+        text-align: center;
+        border-radius: 20px;
+        padding: 60px;
+        position: relative;
+        opacity: 0.9;
+        z-index: 2;
+        background: linear-gradient(to bottom, #01040c, #01040c);
+        box-shadow: 0 0 20px rgba(128, 106, 255, 0.3);
+      }
+
+      .navbar {
+        background: linear-gradient(to right, #000428, #004e92);
+      }
+    </style>
+    <title>Agregar Barbero</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <a class="navbar-brand" href="#">NORTH BARBER</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/admin_dashboard"
+              ><i class="fa fa-home"></i> Dashboard</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin_clientes"
+              ><i class="fa fa-users"></i> Clientes</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin_barberos"
+              ><i class="fa fa-cut"></i> Barberos</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin_citas"
+              ><i class="fa fa-calendar"></i> Citas</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin_servicios"
+              ><i class="fa fa-concierge-bell"></i> Servicios</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container">
+      <h1>Agregar Nuevo Barbero</h1>
+      <form method="POST" action="/admin_agregar_barbero">
+        <div class="form-group">
+          <label for="nombre">Nombre:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="nombre"
+            name="nombre"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="apellidos">Apellidos:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="apellidos"
+            name="apellidos"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="telefono">Teléfono:</label>
+          <input
+            type="tel"
+            class="form-control"
+            id="telefono"
+            name="telefono"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="usuario">Usuario:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="usuario"
+            name="username"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="password">Contraseña:</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            name="password"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Agregar Barbero</button>
+      </form>
+    </div>
+  </body>
+</html>
