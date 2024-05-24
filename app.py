@@ -137,6 +137,13 @@ class App:
         self.app.route("/editar_informacion_barbero", methods=["POST"])(
             self.editar_informacion_barbero
         )
+        self.app.route("/cliente_dashboard", methods=["GET", "POST"])(
+            self.cliente_dashboard
+        )
+
+        self.app.route("/barbero_dashboard", methods=["GET", "POST"])(
+            self.barbero_dashboard
+        )
         self.app.teardown_appcontext(self.close_connection)
 
     def index(self):
@@ -457,6 +464,12 @@ class App:
 
     def run(self):
         self.app.run(debug=True)
+
+    def cliente_dashboard(self):
+        return render_template("cliente_dashboard.html")
+
+    def barbero_dashboard(self):
+        return render_template("barbero_dashboard.html")
 
 
 if __name__ == "__main__":
