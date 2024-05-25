@@ -130,6 +130,10 @@ class App:
 
     def setup_routes(self):
         self.app.route("/")(self.index)
+        self.app.route("/logout")(self.logout)
+        self.app.route("/barbero_dashboard")(self.barbero_dashboard)
+        self.app.route("/cliente_dashboard")(self.ciente_dashboard)
+        self.app.route("/calendario")(self.calendario)
         self.app.route("/registro", methods=["GET", "POST"])(self.registro)
         self.app.route("/login", methods=["GET", "POST"])(self.login)
         self.app.route("/agendar_cita", methods=["GET", "POST"])(self.agendar_cita)
@@ -164,6 +168,21 @@ class App:
         self.app.route("/admin_eliminar_barbero/<int:barbero_id>")(
             self.admin_eliminar_barbero
         )
+        self.app.route("/admin_servicios")(self.admin_servicios)
+        self.app.route("/admin_agregar_servicio", methods=["GET", "POST"])(
+            self.admin_agregar_servicio
+        )
+        self.app.route("/admin_eliminar_servicio/<int:servicio_id>")(
+            self.admin_eliminar_servicio
+        )
+        self.app.route(
+            "/admin_editar_servicio/<int:servicio_id>", methods=["GET", "POST"]
+        )(self.admin_editar_servicio)
+
+        self.app.route("/admin_eliminar_cita/<int:cita_id>", methods=["GET", "POST"])(
+            self.admin_eliminar_cita
+        )
+
         self.app.teardown_appcontext(self.close_connection)
 
     def index(self):
@@ -517,6 +536,36 @@ class App:
             return redirect("/admin_barberos")
         return redirect("/login")
 
+    def calendario(self):
+        barbero_id = session.get("barbero_id")
+        if barbero_id:
+            conn = DatabaseManager(self.DATABASE).get_connection()
+            cursor = conn.cursor()
+            cursor.execute(
+                """SELECT cita.id_cita, cita.fecha, cliente.nombre, servicio.tipo
+                    FROM cita
+                    INNER JOIN cliente ON cita.cliente = cliente.id
+                    INNER JOIN servicio ON cita.servicio = servicio.id_servicio
+                    WHERE cita.barbero = ?""",
+                (barbero_id,),
+            )
+            citas = cursor.fetchall()
+            conn.close()
+
+            return render_template("calendario.html", citas=citas)
+        else:
+            return redirect("/")
+
+    def admin_servicios(self):
+        if "tipo_usuario" in session and session["tipo_usuario"] == 3:
+            conn = DatabaseManager(self.DATABASE).get_connection()
+            cursor = conn.cursor()
+            cursor.execute("SELECT * FROM servicio")
+            servicios = cursor.fetchall()
+            conn.close()
+            return render_template("admin_servicios.html", servicios=servicios)
+        return redirect("/login")
+
     def admin_citas(self):
         if "tipo_usuario" in session and session["tipo_usuario"] == 3:
             conn = DatabaseManager(self.DATABASE).get_connection()
@@ -534,9 +583,89 @@ class App:
             return render_template("admin_citas.html", citas=citas)
         return redirect("/login")
 
+    def admin_eliminar_cita(self, cita_id):
+        if "tipo_usuario" in session and session["tipo_usuario"] == 3:
+            conn = DatabaseManager(self.DATABASE).get_connection()
+            cursor = conn.cursor()
+            cursor.execute("DELETE FROM cita WHERE id_cita = ?", (cita_id,))
+            conn.commit()
+            conn.close()
+            return redirect("/admin_citas")
+        return redirect("/login")
+
+    def admin_agregar_servicio(self):
+        if "tipo_usuario" in session and session["tipo_usuario"] == 3:
+            if request.method == "POST":
+                tipo = request.form.get("tipo")
+                precio = request.form.get("precio")
+                duracion = request.form.get("duracion")
+
+                conn = DatabaseManager(self.DATABASE).get_connection()
+                cursor = conn.cursor()
+
+                cursor.execute(
+                    "INSERT INTO servicio (tipo, precio, duracion) VALUES (?, ?, ?)",
+                    (tipo, precio, duracion),
+                )
+                conn.commit()
+                conn.close()
+                return redirect("/admin_servicios")
+
+            return render_template("admin_agregar_servicio.html")
+
+        return redirect("/login")
+
+    def admin_editar_servicio(self, servicio_id):
+        if "tipo_usuario" in session and session["tipo_usuario"] == 3:
+            conn = DatabaseManager(self.DATABASE).get_connection()
+            cursor = conn.cursor()
+
+            if request.method == "POST":
+                tipo = request.form.get("tipo")
+                precio = request.form.get("precio")
+                duracion = request.form.get("duracion")
+
+                try:
+                    cursor.execute(
+                        "UPDATE servicio SET tipo = ?, precio = ?, duracion = ? WHERE id_servicio = ?",
+                        (tipo, precio, duracion, servicio_id),
+                    )
+                    conn.commit()
+                except sqlite3.Error as e:
+                    conn.rollback()
+                    return f"Error al actualizar el servicio: {e}", 500
+                finally:
+                    conn.close()
+
+                return redirect("/admin_servicios")
+
+            cursor.execute(
+                "SELECT * FROM servicio WHERE id_servicio = ?", (servicio_id,)
+            )
+            servicio = cursor.fetchone()
+            conn.close()
+            return render_template("admin_editar_servicio.html", servicio=servicio)
+
+        return redirect("/login")
+
+    def admin_eliminar_servicio(self, servicio_id):
+        if "tipo_usuario" in session and session["tipo_usuario"] == 3:
+            conn = DatabaseManager(self.DATABASE).get_connection()
+            cursor = conn.cursor()
+            cursor.execute("DELETE FROM servicio WHERE id_servicio = ?", (servicio_id,))
+            conn.commit()
+            conn.close()
+            return redirect("/admin_servicios")
+        return redirect("/login")
+
     def logout(self):
-        session.clear()
-        return redirect("index.html")
+        return render_template("index.html")
+
+    def barbero_dashboard(self):
+        return render_template("barbero_dashboard.html")
+
+    def ciente_dashboard(self):
+        return render_template("cliente_dashboard.html")
 
     def close_connection(self, exception):
         DatabaseManager("barberia.db").close_connection(exception)

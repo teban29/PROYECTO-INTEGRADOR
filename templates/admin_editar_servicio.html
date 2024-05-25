@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    />
+    <style>
+      body {
+        background: linear-gradient(to right, #000428, #004e92);
+        color: white;
+        font-family: "Times New Roman", Times, serif;
+      }
+
+      .container {
+        font-size: larger;
+        text-align: center;
+        border-radius: 20px;
+        padding: 60px;
+        position: relative;
+        opacity: 0.9;
+        z-index: 2;
+        background: linear-gradient(to bottom, #01040c, #01040c);
+        box-shadow: 0 0 20px rgba(128, 106, 255, 0.3);
+      }
+
+      .navbar {
+        background: linear-gradient(to right, #000428, #004e92);
+      }
+    </style>
+    <title>Editar Servicio</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <!-- Navbar content -->
+    </nav>
+    <div class="container">
+      <h1>Editar Servicio</h1>
+      <form method="POST" action="/admin_editar_servicio/{{ servicio[0] }}">
+        <div class="form-group">
+          <label for="tipo">Tipo de Servicio:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="tipo"
+            name="tipo"
+            value="{{ servicio[1] }}"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="precio">Precio:</label>
+          <input
+            type="number"
+            step="0.01"
+            class="form-control"
+            id="precio"
+            name="precio"
+            value="{{ servicio[2] }}"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="duracion">Duración (minutos):</label>
+          <input
+            type="number"
+            class="form-control"
+            id="duracion"
+            name="duracion"
+            value="{{ servicio[3] }}"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+      </form>
+    </div>
+  </body>
+</html>

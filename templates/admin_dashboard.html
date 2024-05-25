@@ -33,6 +33,10 @@
       .navbar {
         background: linear-gradient(to right, #000428, #004e92);
       }
+
+      .btn-container {
+        margin-top: 20px;
+      }
     </style>
     <title>Admin Dashboard</title>
   </head>
@@ -77,12 +81,27 @@
               ><i class="fa fa-concierge-bell"></i> Servicios</a
             >
           </li>
+          <li class="nav-item">
+            <a class="nav-link btn-logout" href="/logout">Cerrar Sesión</a>
+          </li>
         </ul>
       </div>
     </nav>
     <div class="container">
       <h1>Bienvenido Administrador</h1>
       <p>Selecciona una opción del menú para administrar el sistema.</p>
+      <div class="btn-container">
+        <a href="/admin_clientes" class="btn btn-primary"
+          >Administrar Clientes</a
+        >
+        <a href="/admin_barberos" class="btn btn-primary"
+          >Administrar Barberos</a
+        >
+        <a href="/admin_citas" class="btn btn-primary">Administrar Citas</a>
+        <a href="/admin_servicios" class="btn btn-primary"
+          >Administrar Servicios</a
+        >
+      </div>
     </div>
   </body>
 </html>

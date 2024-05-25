@@ -33,18 +33,8 @@
       .navbar {
         background: linear-gradient(to right, #000428, #004e92);
       }
-
-      .actions a {
-        display: inline-block;
-        padding: 8px 16px;
-        margin: 4px;
-        background-color: #007bff;
-        color: #fff;
-        text-decoration: none;
-        border-radius: 4px;
-      }
     </style>
-    <title>Administrar Barberos</title>
+    <title>Agregar Servicio</title>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -72,7 +62,7 @@
               ><i class="fa fa-users"></i> Clientes</a
             >
           </li>
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="/admin_barberos"
               ><i class="fa fa-cut"></i> Barberos</a
             >
@@ -94,41 +84,41 @@
       </div>
     </nav>
     <div class="container">
-      <h1>Lista de Barberos</h1>
-      <div class="actions">
-        <a href="/admin_agregar_barbero">Agregar Barbero</a>
-        <!-- Agregar enlace para eliminar barbero -->
-      </div>
-      <table class="table table-dark table-hover">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Apellidos</th>
-            <th>Teléfono</th>
-            <th>Usuario</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for barbero in barberos %}
-          <tr>
-            <td>{{ barbero[0] }}</td>
-            <td>{{ barbero[1] }}</td>
-            <td>{{ barbero[2] }}</td>
-            <td>{{ barbero[3] }}</td>
-            <td>{{ barbero[4] }}</td>
-            <td>
-              <a
-                href="/admin_eliminar_barbero/{{ barbero[0] }}"
-                class="btn btn-danger"
-                onclick="return confirm('¿Estás seguro de eliminar este cliente?')"
-                >Eliminar</a
-              >
-            </td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
+      <h1>Agregar Nuevo Servicio</h1>
+      <form method="POST" action="/admin_agregar_servicio">
+        <div class="form-group">
+          <label for="tipo">Tipo de Servicio:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="tipo"
+            name="tipo"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="precio">Precio:</label>
+          <input
+            type="number"
+            step="0.01"
+            class="form-control"
+            id="precio"
+            name="precio"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="duracion">Duración (minutos):</label>
+          <input
+            type="number"
+            class="form-control"
+            id="duracion"
+            name="duracion"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Agregar Servicio</button>
+      </form>
     </div>
   </body>
 </html>

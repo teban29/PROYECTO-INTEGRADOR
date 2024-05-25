@@ -77,6 +77,9 @@
               ><i class="fa fa-concierge-bell"></i> Servicios</a
             >
           </li>
+          <li class="nav-item">
+            <a class="nav-link btn-logout" href="/logout">Cerrar Sesión</a>
+          </li>
         </ul>
       </div>
     </nav>
@@ -90,6 +93,7 @@
             <th>Cliente</th>
             <th>Barbero</th>
             <th>Servicio</th>
+            <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
@@ -100,6 +104,13 @@
             <td>{{ cita[2] }}</td>
             <td>{{ cita[3] }}</td>
             <td>{{ cita[4] }}</td>
+            <td>
+              <a
+                href="/admin_eliminar_cita/{{ cita[0] }}"
+                class="btn btn-danger"
+                >Eliminar</a
+              >
+            </td>
           </tr>
           {% endfor %}
         </tbody>
