@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agregar Barbero - North Barber</title>
     <link
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
       rel="stylesheet"
@@ -15,82 +16,106 @@
       body {
         background: linear-gradient(to right, #000428, #004e92);
         color: white;
-        font-family: "Times New Roman", Times, serif;
+        font-family: Arial, sans-serif;
       }
-
       .container {
-        font-size: larger;
-        text-align: center;
-        border-radius: 20px;
         padding: 60px;
-        position: relative;
-        opacity: 0.9;
-        z-index: 2;
-        background: linear-gradient(to bottom, #01040c, #01040c);
-        box-shadow: 0 0 20px rgba(128, 106, 255, 0.3);
+        border-radius: 20px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        background-color: #101b3c;
       }
-
       .navbar {
         background: linear-gradient(to right, #000428, #004e92);
       }
-
+      .navbar-brand {
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+      .nav-link {
+        color: white !important;
+      }
+      .nav-link:hover {
+        color: rgba(255, 255, 255, 0.7) !important;
+      }
       .btn-logout {
         margin-left: auto;
       }
+      .form-control {
+        background-color: #1f4068;
+        border-color: #1f4068;
+        color: white;
+      }
+      .form-control:focus {
+        background-color: #1f4068;
+        border-color: #4a90e2;
+        color: white;
+      }
+      .btn-primary {
+        background-color: #4a90e2;
+        border-color: #4a90e2;
+      }
+      .btn-primary:hover {
+        background-color: #357bd8;
+        border-color: #357bd8;
+      }
     </style>
-    <title>Agregar Barbero</title>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-      <a class="navbar-brand" href="#">NORTH BARBER</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="/admin_dashboard"
-              ><i class="fa fa-home"></i> Dashboard</a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/admin_clientes"
-              ><i class="fa fa-users"></i> Clientes</a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/admin_barberos"
-              ><i class="fa fa-cut"></i> Barberos</a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/admin_citas"
-              ><i class="fa fa-calendar"></i> Citas</a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/admin_servicios"
-              ><i class="fa fa-concierge-bell"></i> Servicios</a
-            >
-          </li>
-        </ul>
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link btn-logout" href="/logout">Cerrar Sesión</a>
-          </li>
-        </ul>
+      <div class="container">
+        <a class="navbar-brand" href="#">North Barber</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/admin_dashboard"
+                ><i class="fas fa-home"></i> Dashboard</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/admin_clientes"
+                ><i class="fas fa-users"></i> Clientes</a
+              >
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/admin_barberos"
+                ><i class="fas fa-cut"></i> Barberos</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/admin_citas"
+                ><i class="fas fa-calendar"></i> Citas</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/admin_servicios"
+                ><i class="fas fa-concierge-bell"></i> Servicios</a
+              >
+            </li>
+          </ul>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link btn btn-danger" href="/logout"
+                ><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a
+              >
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
+
     <div class="container">
-      <h1>Agregar Nuevo Barbero</h1>
+      <h1 class="text-center mb-4">Agregar Nuevo Barbero</h1>
       <form method="POST" action="/admin_agregar_barbero">
         <div class="form-group">
           <label for="nombre">Nombre:</label>
@@ -142,8 +167,14 @@
             required
           />
         </div>
-        <button type="submit" class="btn btn-primary">Agregar Barbero</button>
+        <button type="submit" class="btn btn-primary">
+          <i class="fas fa-user-plus"></i> Agregar Barbero
+        </button>
       </form>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   </body>
 </html>

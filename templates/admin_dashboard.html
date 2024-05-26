@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
     <link
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
       rel="stylesheet"
@@ -17,74 +18,101 @@
         color: white;
         font-family: "Times New Roman", Times, serif;
       }
-
       .container {
-        font-size: larger;
-        text-align: center;
-        border-radius: 20px;
         padding: 60px;
-        position: relative;
-        opacity: 0.9;
-        z-index: 2;
-        background: linear-gradient(to bottom, #01040c, #01040c);
-        box-shadow: 0 0 20px rgba(128, 106, 255, 0.3);
+        border-radius: 20px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        background-color: #101b3c;
+        text-align: center;
       }
-
       .navbar {
         background: linear-gradient(to right, #000428, #004e92);
       }
-
+      .navbar-brand {
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+      .navbar-toggler {
+        border-color: white;
+      }
+      .navbar-nav .nav-item .nav-link {
+        color: white;
+      }
+      .navbar-nav .nav-item.active .nav-link {
+        color: #007bff;
+      }
+      .navbar-nav .nav-link:hover {
+        color: #007bff;
+      }
+      .navbar-nav .nav-item + .nav-item {
+        margin-left: 20px;
+      }
+      .nav-link.btn-logout {
+        color: white !important;
+      }
+      .btn-logout:hover {
+        color: #ffc107 !important;
+      }
       .btn-container {
         margin-top: 20px;
       }
+      .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+      }
+      .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #004085;
+      }
     </style>
-    <title>Admin Dashboard</title>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-      <a class="navbar-brand" href="#">NORTH BARBER</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link" href="/admin_dashboard"
-              ><i class="fa fa-home"></i> Dashboard</a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/admin_clientes"
-              ><i class="fa fa-users"></i> Clientes</a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/admin_barberos"
-              ><i class="fa fa-cut"></i> Barberos</a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/admin_citas"
-              ><i class="fa fa-calendar"></i> Citas</a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/admin_servicios"
-              ><i class="fa fa-concierge-bell"></i> Servicios</a
-            >
-          </li>
-          <li class="nav-item">
-            <a class="nav-link btn-logout" href="/logout">Cerrar Sesión</a>
-          </li>
-        </ul>
+      <div class="container">
+        <a class="navbar-brand" href="#">NORTH BARBER</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="/admin_dashboard"
+                ><i class="fa fa-home"></i> Dashboard</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/admin_clientes"
+                ><i class="fa fa-users"></i> Clientes</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/admin_barberos"
+                ><i class="fa fa-cut"></i> Barberos</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/admin_citas"
+                ><i class="fa fa-calendar"></i> Citas</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/admin_servicios"
+                ><i class="fa fa-concierge-bell"></i> Servicios</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link btn-logout" href="/logout">Cerrar Sesión</a>
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
     <div class="container">
@@ -103,5 +131,8 @@
         >
       </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   </body>
 </html>
